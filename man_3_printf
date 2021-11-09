@@ -1,0 +1,127 @@
+.TH man 3 "1" "November 10, 2021" "man_printf"
+
+.SH NAME
+
+_printf - formatted output conversion
+
+.SH SYNOPSIS
+
+#include "main.h"
+
+int _putchar(char c);
+
+int _printf(const char *format, ...);
+
+int f_mod(char mod, va_list list);
+
+int print_char(char c);
+
+int print_int(int i, int amt);
+
+int print_str(char *s);
+
+typedef struct converter
+.RS 2
+
+convert;
+.RE
+.SH DESCRIPTION
+
+The functions in the _printf() produce output according to a format as described below. The function _printf() write output
+to stdout, the standard output stream.
+
+The _printf() function write the output under the control of a format string that specifies how subsequent arguments (or arguments
+accessed via the variable-length argument facilities of stdarg()) are converted for output.
+
+Format of the format string
+.RS 3
+The format string is a character string, beginning and ending in its initial shift state, if any. The format string is composed of zero or
+more directives: ordinary characters (not %), which are copied unchanged to the output stream; and conversion specifications, each of which results
+in fetching zero or more subsequent arguments. Each conversion specification is introduced by the character %, and ends with a conversion specifier. In
+between there may be (in this order) zero or more flags, an optional minimum field width, an optional precision and an optional length modifier
+.RE
+
+The overall syntax of a conversion specification is:
+.RS3
+int converter(char modifier, va_list list)
+.RE
+Conversion specifiers
+
+A character that specifies the type of conversion to be applied. The conversion specifiers and their meanings are:
+
+d, i 
+.RS 3 
+The int argument is converted to signed decimal notation. The precision, if any, gives the minimum number of digits that must appear; if the converted value
+requires fewer digits, it is padded on the left with zeros. The default precision is 1. When 0 is printed with an explicit precision 0, the output is empty.
+.RE
+
+c
+.RS 3
+If no l modifier is present, the int argument is converted to an unsigned char, and the resulting character is written. If an l modifier is present, the wint_t
+(wide character) argument is converted to a multibyte sequence by a call to the wcrtomb(3) function, with a conversion state starting in the initial state, and the resulting multibyte string is written.
+.RE
+
+s
+.RS 3
+If no l modifier is present: the const char * argument is expected to be a pointer to an array of character type (pointer to a string). Characters from the array are
+written up to (but not including) a terminating null byte ('\0'); if a precision is specified, no more than the number specified are written. If a precision is given, no
+null byte need be present; if the precision is not specified, or is greater than the size of the array, the array must contain a terminating null byte.
+.RE
+
+%
+.RS 3
+A '%' is written.  No argument is converted. The complete conversion specification is '%%'.
+.RE
+
+.SH RETURN VALUE
+
+Upon successful return, the function return the number of characters printed (excluding the null byte used to end output to strings).
+
+If an output error is encountered, a negative value is returned.
+
+.SH NOTES
+
+The _printf is a recreation of the printf function provided by the standard input/output (<stdio.h>) library. The _printf (function) writes the output under a format string that is specified later on in the function. 
+The _printf is composed of 4 files in total, including the main.
+
+Main - calls printf.
+
+Printf - checks when the letter being passed is a modifier and the char after it is not (null).
+
+Help Functions - holds the functions that are going to be called in the main code and will give the right function.
+
+Then _printf will pass what it received to main.c.
+
+The execution of all compiled files should at least print out a string, character an integer.
+
+Some programs imprudently rely on code such as the following:
+.RS 2
+typedef struct converter
+
+{
+
+char mod;
+
+/*va_list contains un list de variables*/
+
+int (*f)(va_list list);
+
+}
+
+convert;
+.RE
+The struct converter function especifies the conversion by using the char variable (char mod) and the function pointer (f) which accepts a list of variables and return an integer.
+
+.SH SEE ALSO
+
+_printf(1), _putchar(),
+
+.SH COLOPHON
+
+This page is part of release 1.0 of the HOLBERTON man-pages project.
+
+.SH AUTHORS
+
+Vanessa Loiz and Rafael E. Narvaez Cabeza
+
+GNU                            			2021-11-10                      		_printf()d
