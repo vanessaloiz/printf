@@ -62,10 +62,10 @@ int f_mod(char mod, va_list list)
 	switch (mod)
 	{
 		case 'c':
-			return (print_char(va_arg(list, char)));
+			return (print_char(va_arg(list, int)));
 		case 'd':
 		case 'i':
-			return (print_int(va_arg(list, int)));
+			return (print_int(va_arg(list, int), 0));
 		case 's':
 			return (print_str(va_arg(list, char *)));
 	}
