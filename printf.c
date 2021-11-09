@@ -1,4 +1,6 @@
 #include "main.h"
+int _printf(const char *format, ...);
+
 /**
  * _printf - function combines printers and makes a simple replica of print
  * @format: amount of arguments passed
