@@ -19,6 +19,9 @@ int print_str(char *s)
 {
 	int idx;
 
+	if (s == NULL)
+		s = "(null)";
+
 	for (idx = 0; s[idx] != '\0'; idx++)
 		_putchar(s[idx]);
 	return (idx);
@@ -32,7 +35,7 @@ int print_str(char *s)
  */
 int print_int(int i, int amt)
 {
-	int n = 0;
+	unsigned int n = 0;
 
 	if (i < 0) /*verifica si hay numeros negativos*/
 	{
