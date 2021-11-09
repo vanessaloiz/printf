@@ -22,8 +22,7 @@ int _printf(const char *format, ...)
 		{
 			_putchar(format[index]);
 			count++;
-			index++;
-			index++;
+			index += 2;
 			continue;
 		}
 		if (format[index] == '%' && format[index + 1] != '%')
@@ -38,8 +37,7 @@ int _printf(const char *format, ...)
 			else
 			{
 				count += f_mod(format[index + 1], list);
-				index++;
-				index++;
+				index += 2;
 			}
 		}
 		else
