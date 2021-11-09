@@ -16,12 +16,13 @@ int _printf(const char *format, ...)
 
 	va_start(list, format);
 
-	for (index = 0; format[index] != '\0'; index++)
+	while (format[index] != '\0')
 	{
 		if (format[index] == '%' && format[index + 1] == '%')
 		{
 			_putchar(format[index]);
 			count++;
+			index++;
 			index++;
 			continue;
 		}
@@ -32,10 +33,12 @@ int _printf(const char *format, ...)
 			{
 				_putchar(format[index]);
 				count++;
+				index++;
 			}
 			else
 			{
 				count += f_mod(format[index + 1], list);
+				index++;
 				index++;
 			}
 		}
@@ -43,6 +46,7 @@ int _printf(const char *format, ...)
 		{
 			_putchar(format[index]);
 			count++;
+			index++;
 		}
 	}
 	va_end(list);
