@@ -2,9 +2,9 @@
 int _printf(const char *format, ...);
 
 /**
- * _printf - function combines printers and makes a simple replica of print
- * @format: amount of arguments passed
- * Return: count = len of argument
+ * _printf - Function combines printers and makes a simple replica of print.
+ * @format: Amount of arguments passed.
+ * Return: count = length of argument.
  */
 int _printf(const char *format, ...)
 {
