@@ -37,7 +37,7 @@ int print_int(int i, int amt)
 {
 	unsigned int n = 0;
 
-	if (i < 0) /*verifica si hay numeros negativos*/
+	if (i < 0) /* checks for negative numbers */
 	{
 		_putchar('-');
 		amt++;
